@@ -1,0 +1,2 @@
+#!/bin/bash
+echo "Projekt statik HTML/JS - Nuk nevojitet build"

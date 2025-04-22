@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: tekno-ai  # Ndryshoje me emrin e projektit tënd
+    static: true
+    buildCommand: ""
+    startCommand: ""
