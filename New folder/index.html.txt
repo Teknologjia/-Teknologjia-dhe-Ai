@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teknologjia & AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">AI 🤖</div>
+        <ul>
+            <li><a href="index.html">Kryefaqja</a></li>
+            <li><a href="ai.html">Bisedo me AI</a></li>
+        </ul>
+    </nav>
+
+    <main class="hero">
+        <h1>Eksploro Fuqinë e <span>Inteligjencës Artificiale</span></h1>
+        <p>Platforma interaktive për të mësuar dhe eksperimentuar me teknologjinë e së ardhmes</p>
+        <a href="ai.html" class="cta-button">Fillo Tani</a>
+    </main>
+
+    <footer>
+        <p>© 2023 Projekti im për AI. Të gjitha të drejtat e rezervuara.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,77 @@
+document.addEventListener('DOMContentLoaded', function() {
+    const chatBox = document.getElementById('chat-box');
+    const userInput = document.getElementById('user-input');
+    const sendButton = document.getElementById('send-button');
+    
+    // Funksioni për të shtuar mesazhe në chat
+    function addMessage(sender, message, isError = false) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = ${sender}-message ${isError ? 'error' : ''};
+        
+        messageDiv.innerHTML = `
+            <div class="avatar">${sender === 'ai' ? 'AI' : 'Ju'}</div>
+            <div class="message-content">${message}</div>
+        `;
+        
+        chatBox.appendChild(messageDiv);
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+    
+    // Funksioni për të simuluar përgjigjen e AI
+    function getAIResponse(question) {
+        // Simuloni një vonesë të vogël
+        setTimeout(() => {
+            // Përgjigje bazë në varësi të pyetjes
+            let response;
+            
+            if (question.toLowerCase().includes('si je')) {
+                response = "Unë jam mirë, faleminderit! Si mund t'ju ndihmoj?";
+            } 
+            else if (question.toLowerCase().includes('ora')) {
+                const now = new Date();
+                response = Tani është ${now.getHours()}:${now.getMinutes()};
+            }
+            else if (question.toLowerCase().includes('lloji')) {
+                response = "Unë jam një model bazë i inteligjencës artificiale i krijuar për të përgjigjur pyetjeve të thjeshta.";
+            }
+            else {
+                const randomResponses = [
+                    "Interesante pyetje! A mund të jepni më shumë detaje?",
+                    "Nuk jam plotësisht i sigurt për këtë. Mund të kërkoni në internet për informacion më të saktë.",
+                    "Bazuar në pyetjen tuaj, mund t'ju sugjeroj të konsultoni burime të specializuara.",
+                    "Faleminderit për pyetjen! Kjo është një temë shumë interesante."
+                ];
+                response = randomResponses[Math.floor(Math.random() * randomResponses.length)];
+            }
+            
+            addMessage('ai', response);
+        }, 1000); // Simuloni një vonesë prej 1 sekonde
+    }
+    
+    // Event listeners
+    sendButton.addEventListener('click', function() {
+        const question = userInput.value.trim();
+        if (question) {
+            addMessage('user', question);
+            userInput.value = '';
+            
+            // Shto një mesazh loading
+            const loadingDiv = document.createElement('div');
+            loadingDiv.className = 'ai-message loading';
+            loadingDiv.innerHTML = `
+                <div class="avatar">AI</div>
+                <div class="message-content">Po mendoj...</div>
+            `;
+            chatBox.appendChild(loadingDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+            
+            getAIResponse(question);
+        }
+    });
+    
+    userInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            sendButton.click();
+        }
+    });
+});
